@@ -2,8 +2,6 @@
 
 Open-vocabulary remote-sensing segmentation with heterogeneous supervision.
 
-[简体中文](README.zh-CN.md)
-
 ## 1. Install
 
 Use Python 3.12+ and CUDA-enabled PyTorch 2.7+ compatible with [SAM3](https://github.com/facebookresearch/sam3#installation).

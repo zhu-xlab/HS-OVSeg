@@ -1,6 +1,6 @@
 # 训练
 
-[English](README_TRAINING.md) | **简体中文** | [项目主页](../README.zh-CN.md)
+[English](README_TRAINING.md) | **简体中文** | [项目主页](../README.md)
 
 在具备 SAM3 依赖的环境中，从项目根目录运行命令。Python 入口为 `ovrs_segmentation.training.sam3_multilevel`。服务器脚本负责启动，模型与训练实现在包内。
 

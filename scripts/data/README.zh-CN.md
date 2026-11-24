@@ -1,6 +1,6 @@
 # 数据准备
 
-[English](README.md) | **简体中文** | [项目主页](../../README.zh-CN.md)
+[English](README.md) | **简体中文** | [项目主页](../../README.md)
 
 从项目根目录运行本目录 CLI。可复用代码位于 `ovrs_segmentation/preprocessing/`。服务器上始终显式指定数据和输出根目录；训练数据、人工语义测试集及大图与代码分开存放。
 

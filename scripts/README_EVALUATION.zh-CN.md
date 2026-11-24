@@ -1,6 +1,6 @@
 # 评估
 
-[English](README_EVALUATION.md) | **简体中文** | [项目主页](../README.zh-CN.md)
+[English](README_EVALUATION.md) | **简体中文** | [项目主页](../README.md)
 
 训练验证保留各原始任务指标；最终语义测试则对所有监督级别统一评估像素掩膜。两类报告分开使用。
 

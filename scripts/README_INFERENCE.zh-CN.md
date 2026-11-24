@@ -1,6 +1,6 @@
 # 推理
 
-[English](README_INFERENCE.md) | **简体中文** | [项目主页](../README.zh-CN.md)
+[English](README_INFERENCE.md) | **简体中文** | [项目主页](../README.md)
 
 ## 影像与文本提示
 
