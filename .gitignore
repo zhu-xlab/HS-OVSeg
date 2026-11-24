@@ -26,6 +26,10 @@ slurm-*.out
 paper/
 AGENTS.md
 
+# Local annotation tools, separate from the HS-OVSeg workflow
+/sam_manager.py
+/sam_remote_server.py
+
 # Publish the main method only
 ablation_experiments/
 comparison_experiments/
