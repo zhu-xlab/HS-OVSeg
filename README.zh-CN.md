@@ -30,18 +30,18 @@ python scripts/data/export_huggingface.py \
 
 目录布局为 `AID/` 等训练目录，以及 `segmentation_test/AID-GT90/` 等独立语义测试目录。每个数据集包含 `dataset.json`、`classes.json`、`splits/` 和被引用的图像/标注。元数据及标注路径须相对于各数据集目录；掩码为原有类别 ID，255 为忽略值。测试标签不参与训练或验证。原始数据转换方法见[数据准备](scripts/data/README.zh-CN.md)。
 
-将下面的 `OWNER/DATASET` 替换为实际发布的仓库 ID。私有或 gated 数据使用 `hf auth login` 或环境变量 `HF_TOKEN` 认证，不将令牌写进配置：
+数据仓库为 [WeiHuang95/HS-OVSeg-Data](https://huggingface.co/datasets/WeiHuang95/HS-OVSeg-Data)，仓库 ID 也可通过参数更换。私有或 gated 数据使用 `hf auth login` 或环境变量 `HF_TOKEN` 认证，不将令牌写进配置：
 
 ```bash
 export OVRS_HF_DATASET_REPO=WeiHuang95/HS-OVSeg-Data
 export OVRS_DATA_ROOT=/path/to/RSOD
 python scripts/data/download_huggingface.py \
-  --repo-id "$OVRS_HF_DATASET_REPO" --data-root "$OVRS_DATA_ROOT" --mode all
+  --repo-id "$OVRS_HF_DATASET_REPO" --data-root "$OVRS_DATA_ROOT" --mode all --extract-archives
 ```
 
 下载默认排除 OOD，并使用真实训练/测试 reader 检查所选 split、解码各 split 的首个样本；这不是逐样本完整审计。`--mode train` 只下载训练/验证，`--mode test` 只下载测试；`--revision TAG_OR_COMMIT` 固定版本；`--test-suite PATH` 选择测试子集。重复运行会复用已下载且未变更的文件。
 
-也支持按数据集上传 `.tar`、`.tar.gz`、`.tgz` 或 `.zip` 并添加 `--extract-archives`。例如 `AID.tar.gz` 内须包含 `AID/dataset.json`，`segmentation_test/AID-GT90.tar.gz` 内须包含 `segmentation_test/AID-GT90/dataset.json`；内部路径均相对于 RSOD 根目录。解压会更新对应本地文件。原始数据或 Parquet 格式需先转换。
+发布版本按 `archives/AID/part-00000.tar` 等路径保存整理后的 tar 分片，`data-manifest.json` 记录 SHA-256；下载命令中的 `--extract-archives` 会重建目录。维护者可用 `python scripts/data/publish_huggingface.py --repo-id WeiHuang95/HS-OVSeg-Data --data-root /path/to/RSOD --work-root /path/to/publication` 完成导出、默认 4 GiB 分片和上传。上传要求私有仓库；重复运行跳过已校验上传的分片。也支持按数据集上传 `.tar`、`.tar.gz`、`.tgz` 或 `.zip` 并添加 `--extract-archives`。例如 `AID.tar.gz` 内须包含 `AID/dataset.json`，`segmentation_test/AID-GT90.tar.gz` 内须包含 `segmentation_test/AID-GT90/dataset.json`；内部路径均相对于 RSOD 根目录。解压会更新对应本地文件。原始数据或 Parquet 格式需先转换。
 
 ## 训练
 

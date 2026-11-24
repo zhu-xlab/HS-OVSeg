@@ -18,7 +18,7 @@ from ovrs_segmentation.datasets.semantic_dataset import SemanticSegmentationData
 from ovrs_segmentation.preprocessing.huggingface_data import (
     dataset_entries, download_datasets, extract_archive, validate_datasets,
 )
-from ovrs_segmentation.preprocessing.huggingface_export import export_dataset
+from ovrs_segmentation.preprocessing.huggingface_export import export_dataset, archive_dataset
 from ovrs_segmentation.evaluation.segmentation_test import evaluate_segmentation
 from types import SimpleNamespace
 import torch
@@ -39,6 +39,49 @@ def prepared(root, splits):
 
 
 class HuggingFaceDataTest(unittest.TestCase):
+    def test_sharded_download_restores_training_dataset(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); remote = root / "hub"; local = root / "download"
+            prepared(root / "source", ("train", "val"))
+            shards = archive_dataset(root / "source", "Toy", remote / "archives", shard_bytes=1024)
+            self.assertGreater(len(shards), 1)
+            suite = root / "train.yaml"
+            suite.write_text(yaml.safe_dump({"datasets": [dict(name="Toy", source_task="lulc",
+                root="{data_root}/Toy")]}))
+            def download(**kwargs):
+                self.assertIn("archives/Toy/*.tar", kwargs["allow_patterns"])
+                shutil.copytree(remote, kwargs["local_dir"])
+            with patch("huggingface_hub.snapshot_download", side_effect=download):
+                report = download_datasets("owner/data", local, mode="train", extract=True,
+                    train_suite=suite)
+            self.assertTrue(report["validated"])
+            self.assertEqual(len(open_text_prompt_dataset(local / "Toy", "train")), 1)
+
+    def test_publication_uploads_only_selected_tar_shards_and_skips_verified_uploads(self):
+        import hashlib
+        from ovrs_segmentation.preprocessing.huggingface_publish import publish
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); source = root / "source"; work = root / "work"
+            prepared(source / "Toy", ("train", "val"))
+            entries = [dict(name="Toy", root=source / "Toy", split=split, reader="training",
+                            source_task="lulc") for split in ("train", "val")]
+            uploaded, calls = {}, []
+            class API:
+                def repo_info(self, *args, **kwargs):
+                    return SimpleNamespace(private=True)
+                def get_paths_info(self, repo, paths, **kwargs):
+                    return [SimpleNamespace(lfs=SimpleNamespace(sha256=uploaded[paths[0]]))] if paths[0] in uploaded else []
+                def upload_file(self, *, path_or_fileobj, path_in_repo, **kwargs):
+                    uploaded[path_in_repo] = hashlib.sha256(Path(path_or_fileobj).read_bytes()).hexdigest()
+                    calls.append(path_in_repo)
+            with patch("huggingface_hub.HfApi", API), patch(
+                    "ovrs_segmentation.preprocessing.huggingface_publish.dataset_entries", return_value=entries):
+                publish("owner/data", source, work)
+                self.assertEqual(calls, ["archives/Toy/part-00000.tar", "data-manifest.json"])
+                calls.clear()
+                publish("owner/data", source, work)
+                self.assertEqual(calls, ["data-manifest.json"])
+            self.assertEqual(json.loads((work / "publication-status.json").read_text())["phase"], "complete")
     def test_export_keeps_only_selected_samples_once_and_unpacks_lmdb(self):
         from ovrs_segmentation.preprocessing.lmdb_dataset import pack_dataset
         with tempfile.TemporaryDirectory() as directory:

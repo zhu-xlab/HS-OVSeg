@@ -4,7 +4,9 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import hashlib
 from pathlib import Path, PureWindowsPath
+import tarfile
 
 from ovrs_segmentation.datasets import open_text_prompt_dataset
 from ovrs_segmentation.datasets.semantic_dataset import SemanticSegmentationDataset
@@ -21,7 +23,54 @@ METADATA_KEYS = {
 }
 
 
-def export_dataset(source, destination, splits, *, reader, level):
+def archive_dataset(dataset_root, relative, archive_root, *, shard_bytes=4 * 1024**3):
+    """Package one filtered dataset into bounded tar shards with portable paths."""
+    root, relative = Path(dataset_root).resolve(), Path(relative)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError("Archive dataset paths must be relative")
+    if shard_bytes < 1024:
+        raise ValueError("Shard size must be at least 1024 bytes")
+    folder = Path(archive_root) / relative
+    folder.mkdir(parents=True, exist_ok=True)
+    results, archive, current, current_bytes = [], None, None, 0
+
+    def finish():
+        if archive is None:
+            return
+        archive.close()
+        complete = current.with_suffix("")
+        current.replace(complete)
+        digest = hashlib.sha256()
+        with complete.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(8 * 1024**2), b""):
+                digest.update(chunk)
+        results.append(dict(path=str(complete), bytes=complete.stat().st_size,
+                            sha256=digest.hexdigest()))
+
+    try:
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            if path.is_symlink():
+                raise ValueError(f"Export contains a symlink: {path}")
+            size = path.stat().st_size
+            estimate = 512 + ((size + 511) // 512) * 512
+            if archive is not None and current_bytes + estimate > shard_bytes:
+                finish(); archive = None
+            if archive is None:
+                current = folder / f"part-{len(results):05d}.tar.partial"
+                archive = tarfile.open(current, "w")
+                current_bytes = 0
+            archive.add(path, arcname=(relative / path.relative_to(root)).as_posix(), recursive=False)
+            current_bytes += estimate
+        finish(); archive = None
+    finally:
+        if archive is not None:
+            archive.close()
+    return results
+
+
+def export_dataset(source, destination, splits, *, reader, level, progress=None):
     source, destination = Path(source).resolve(), Path(destination).resolve()
     if source == destination or source in destination.parents or destination in source.parents:
         raise ValueError("Export destination must be separate from the source dataset")
@@ -60,6 +109,8 @@ def export_dataset(source, destination, splits, *, reader, level):
             target.write_bytes(data)
             copied.add(relative)
             total += len(data)
+            if progress is not None and len(copied) % 1000 == 0:
+                progress(files=len(copied), bytes=total)
             return relative.as_posix()
 
         # Catalog and only the selected split files are public data dependencies.

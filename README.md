@@ -21,13 +21,13 @@ Request SAM3 checkpoint access from the [official model repository](https://hugg
 
 ## Data from Hugging Face
 
-Published data includes only the 20 training-source datasets and their selected train/validation/test samples; OOD data is excluded. The dataset repository ID is configurable; replace `OWNER/DATASET` with the repository you publish. For private/gated data, use `hf auth login` or set `HF_TOKEN` in your environment. No token belongs in a configuration file.
+The dataset repository is [WeiHuang95/HS-OVSeg-Data](https://huggingface.co/datasets/WeiHuang95/HS-OVSeg-Data). Published data includes only the 20 training-source datasets and their selected train/validation/test samples; OOD data is excluded. The repository ID is configurable. For private/gated data, use `hf auth login` or set `HF_TOKEN` in your environment. No token belongs in a configuration file.
 
 ```bash
 export OVRS_HF_DATASET_REPO=WeiHuang95/HS-OVSeg-Data
 export OVRS_DATA_ROOT=/path/to/RSOD
 python scripts/data/download_huggingface.py \
-  --repo-id "$OVRS_HF_DATASET_REPO" --data-root "$OVRS_DATA_ROOT" --mode all
+  --repo-id "$OVRS_HF_DATASET_REPO" --data-root "$OVRS_DATA_ROOT" --mode all --extract-archives
 ```
 
 Before uploading, export a clean publication tree from your prepared datasets. Run this on the machine holding the data, with a new output directory:
@@ -58,7 +58,7 @@ Metadata and annotation paths must be relative to each dataset root. Preserve vo
 
 Downloads preserve the directory structure and reuse up-to-date files. Use `--mode train` or `--mode test` to download separately, and `--revision TAG_OR_COMMIT` for reproducibility. The default test scope is `training_source` (20 datasets); use `--test-suite PATH` for a custom subset. After downloading, the command resolves every selected split and decodes its first sample with the actual training/test reader; it does not audit every image or mask.
 
-Alternatively, upload `AID.tar.gz` / `AID.zip`, etc., and `segmentation_test/AID-GT90.tar.gz`, etc., then add `--extract-archives`. Each archive must contain paths relative to the RSOD root, including its dataset directory, e.g. `AID/dataset.json` or `segmentation_test/AID-GT90/dataset.json`. Extraction updates matching local files. Arbitrary raw datasets and Parquet exports require preparation first.
+The published release uses prepared tar shards at `archives/AID/part-00000.tar`, etc., with SHA-256 checksums in `data-manifest.json`; `--extract-archives` downloads and reconstructs these directories. Maintainers can export, shard (4 GiB by default), and upload the selection with `python scripts/data/publish_huggingface.py --repo-id WeiHuang95/HS-OVSeg-Data --data-root /path/to/RSOD --work-root /path/to/publication`. The publisher requires a private repository and skips already verified uploads on rerun. Alternatively, it accepts single-dataset `AID.tar.gz` / `AID.zip`, etc., and `segmentation_test/AID-GT90.tar.gz`, etc. Each archive must contain paths relative to the RSOD root, including its dataset directory, e.g. `AID/dataset.json` or `segmentation_test/AID-GT90/dataset.json`. Extraction updates matching local files. Arbitrary raw datasets and Parquet exports require preparation first.
 
 ## Training
 

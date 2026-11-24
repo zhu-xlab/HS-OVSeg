@@ -134,10 +134,14 @@ def download_datasets(repo_id, data_root, *, revision="main", mode="all",
     patterns = [f"{directory}/**" for directory in directories]
     archives = [f"{directory}{suffix}" for directory in directories for suffix in ARCHIVE_SUFFIXES]
     if extract:
-        patterns += archives
+        patterns += archives + [f"archives/{directory}/*{suffix}"
+            for directory in directories for suffix in ARCHIVE_SUFFIXES]
     snapshot_download(repo_id=repo_id, repo_type="dataset", revision=revision,
                       local_dir=str(root), allow_patterns=patterns, max_workers=workers)
     if extract:
+        archives += [path.relative_to(root).as_posix() for directory in directories
+                     for path in sorted((root / "archives" / directory).glob("*"))
+                     if path.is_file() and path.name.endswith(ARCHIVE_SUFFIXES)]
         for name in archives:
             archive = root / name
             if archive.is_file():
