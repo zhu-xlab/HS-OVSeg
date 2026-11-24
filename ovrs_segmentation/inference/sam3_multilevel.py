@@ -56,6 +56,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--threshold", type=float, default=0.5)
     parser.add_argument("--prompt-batch-size", type=int, default=16)
     parser.add_argument("--sam3-input-size", type=int)
+    parser.add_argument("--tile-overlap", type=int, default=148,
+                        help="Overlap in pixels (default: 148; 0 disables overlap)")
     parser.add_argument("--lora-rank", type=int)
     parser.add_argument("--lora-scale", type=float)
     parser.add_argument("--precision", choices=["fp32", "bf16", "fp16"], default="bf16")
@@ -283,22 +285,33 @@ def _predict_tile(
 
 
 @torch.inference_mode()
-def _predict(model, image, queries, *, device, precision, prompt_batch_size, aggregation):
-    """Predict at native pixel scale and stitch disjoint model-sized windows."""
+def _predict(model, image, queries, *, device, precision, prompt_batch_size, aggregation, overlap=148):
+    """Blend overlapping native-scale windows, then restore the original grid."""
+    tile_height, tile_width = model.sam3_input_size
+    if not 0 <= overlap < min(tile_height, tile_width):
+        raise ValueError("--tile-overlap must be nonnegative and smaller than the model input size")
+    stride = (tile_height - overlap, tile_width - overlap)
     images = torch.from_numpy(image.copy()).permute(2, 0, 1)[None].float().div_(255)
     original_size = image.shape[:2]
     images = upsample_small_image(images, model.sam3_input_size)
     height, width = images.shape[-2:]
     concept_logits = None
-    activations = np.empty((len(queries), height, width), dtype=np.float32)
-    for top, left, valid_height, valid_width, tile in image_tiles(images, model.sam3_input_size):
+    activations = np.zeros((len(queries), height, width), dtype=np.float32)
+    weight_sum = np.zeros((height, width), dtype=np.float32)
+    weights = (np.maximum(np.outer(np.hanning(tile_height), np.hanning(tile_width)), 1e-3)
+               .astype(np.float32) if overlap else np.ones(model.sam3_input_size, dtype=np.float32))
+    for top, left, valid_height, valid_width, tile in image_tiles(images, model.sam3_input_size, stride=stride):
         tile_image = tile[0].permute(1, 2, 0).numpy() * 255
         logits, _, pixels = _predict_tile(
             model, tile_image, queries, device=device, precision=precision,
             prompt_batch_size=prompt_batch_size, aggregation=aggregation,
         )
         concept_logits = logits if concept_logits is None else np.maximum(concept_logits, logits)
-        activations[:, top:top + valid_height, left:left + valid_width] = pixels[:, :valid_height, :valid_width]
+        valid_weights = weights[:valid_height, :valid_width]
+        activations[:, top:top + valid_height, left:left + valid_width] += (
+            pixels[:, :valid_height, :valid_width] * valid_weights)
+        weight_sum[top:top + valid_height, left:left + valid_width] += valid_weights
+    activations /= weight_sum[None]
     probabilities = torch.from_numpy(concept_logits).sigmoid().numpy()
     if (height, width) != original_size:
         activations = torch.nn.functional.interpolate(
@@ -471,6 +484,8 @@ def main(*, model_loader=None, result_metadata=None) -> None:
         raise ValueError("--threshold must be between 0 and 1")
     if args.prompt_batch_size < 1:
         raise ValueError("--prompt-batch-size must be positive")
+    if args.tile_overlap < 0:
+        raise ValueError("--tile-overlap must be nonnegative")
     if args.lora_rank is not None and args.lora_rank < 1:
         raise ValueError("--lora-rank must be positive")
     if args.lora_scale is not None and args.lora_scale <= 0:
@@ -523,6 +538,7 @@ def main(*, model_loader=None, result_metadata=None) -> None:
                 precision=args.precision,
                 prompt_batch_size=args.prompt_batch_size,
                 aggregation=args.prompt_aggregation,
+                overlap=args.tile_overlap,
             )
 
             predictions = _save_unified_outputs(
@@ -549,6 +565,10 @@ def main(*, model_loader=None, result_metadata=None) -> None:
                 "threshold": args.threshold,
                 "prompt_batch_size": args.prompt_batch_size,
                 "prompt_aggregation": args.prompt_aggregation,
+                "tile_size": list(model.sam3_input_size),
+                "tile_overlap": args.tile_overlap,
+                "tile_stride": [size - args.tile_overlap for size in model.sam3_input_size],
+                "tile_blending": "hann_weighted_mean" if args.tile_overlap else "none",
                 "predictions": predictions,
                 **extra_metadata,
             }

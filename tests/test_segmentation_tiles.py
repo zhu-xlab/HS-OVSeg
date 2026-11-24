@@ -17,7 +17,7 @@ class SegmentationTilesTest(unittest.TestCase):
             return np.array([1.], dtype=np.float32), None, np.ones((1, 4, 4), dtype=np.float32)
         with patch("ovrs_segmentation.inference.sam3_multilevel._predict_tile", tile_predict):
             _, _, pixels = _predict(SimpleNamespace(sam3_input_size=(4, 4)), np.zeros((2, 3, 3), dtype=np.uint8), ["a"],
-                                   device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max")
+                                   device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max", overlap=0)
         self.assertEqual(pixels.shape, (1, 2, 3))
         self.assertTrue((pixels == 1).all())
 
@@ -33,9 +33,44 @@ class SegmentationTilesTest(unittest.TestCase):
 
         with patch("ovrs_segmentation.inference.sam3_multilevel._predict_tile", tile_predict):
             logits, _, pixels = _predict(SimpleNamespace(sam3_input_size=(4, 4)), image, ["a"],
-                                        device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max")
+                                        device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max", overlap=0)
         np.testing.assert_allclose(pixels[0], image[:, :, 0], rtol=1e-6)
         self.assertEqual(logits[0], 2)
+
+    def test_default_overlap_148_uses_stride_370_and_covers_padded_edge(self):
+        from ovrs_segmentation.inference.sam3_multilevel import _predict
+        image = np.broadcast_to((np.arange(1000) % 251)[None, :, None], (518, 1000, 3)).astype(np.uint8).copy()
+        starts = []
+        def predict(model, tile, queries, **kwargs):
+            starts.append(round(float(tile[0, 0, 0])))
+            return np.array([len(starts)], np.float32), None, tile[:, :, :1].transpose(2, 0, 1)
+        with patch("ovrs_segmentation.inference.sam3_multilevel._predict_tile", predict):
+            _, _, pixels = _predict(SimpleNamespace(sam3_input_size=(518, 518)), image, ["a"],
+                device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max")
+        self.assertEqual(starts, [0, 370 % 251, 740 % 251])
+        self.assertEqual(pixels.shape, (1, 518, 1000))
+        self.assertTrue(np.isfinite(pixels).all())
+        np.testing.assert_allclose(pixels[0], image[:, :, 0], rtol=1e-5, atol=1e-5)
+
+    def test_overlap_blends_probabilities_instead_of_overwriting_tiles(self):
+        from ovrs_segmentation.inference.sam3_multilevel import _predict
+        values = iter([.2, .8])
+        def predict(*args, **kwargs):
+            return np.array([1.], np.float32), None, np.full((1, 4, 4), next(values), np.float32)
+        with patch("ovrs_segmentation.inference.sam3_multilevel._predict_tile", predict):
+            _, _, pixels = _predict(SimpleNamespace(sam3_input_size=(4, 4)), np.zeros((4, 6, 3), np.uint8), ["a"],
+                device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max", overlap=2)
+        self.assertTrue(.2 < pixels[0, 1, 2] < .3)
+        self.assertTrue(.7 < pixels[0, 1, 3] < .8)
+        np.testing.assert_allclose(pixels[0, :, 0], .2)
+        np.testing.assert_allclose(pixels[0, :, -1], .8)
+
+    def test_invalid_overlap_fails_before_prediction(self):
+        from ovrs_segmentation.inference.sam3_multilevel import _predict
+        for overlap in (-1, 4, 5):
+            with self.assertRaisesRegex(ValueError, "tile-overlap"):
+                _predict(SimpleNamespace(sam3_input_size=(4, 4)), np.zeros((4, 6, 3), np.uint8), ["a"],
+                    device=torch.device("cpu"), precision="fp32", prompt_batch_size=1, aggregation="max", overlap=overlap)
 
     def test_matching_model_input_is_not_resized_by_shared_forward(self):
         model = SimpleNamespace(
