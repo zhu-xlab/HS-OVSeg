@@ -1,0 +1,3 @@
+datasets:
+  - {name: DLRSD, source_task: lulc, root: '{test_root}/DLRSD', split: test}
+  - {name: VDD, source_task: lulc, root: '{test_root}/VDD', split: test}

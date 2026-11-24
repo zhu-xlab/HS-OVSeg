@@ -1,0 +1,21 @@
+datasets:
+  - {name: AID, source_task: scene, root: '{data_root}/AID', split: val}
+  - {name: NWPU-RESISC45, source_task: scene, root: '{data_root}/NWPU-RESISC45', split: val}
+  - {name: PatternNet, source_task: scene, root: '{data_root}/PatternNet', split: val}
+  - {name: DIOR-R, source_task: object, root: '{data_root}/DIOR-R', split: val}
+  - {name: DOTA-v2, source_task: object, root: '{data_root}/DOTA-v2', split: val}
+  - {name: FAIR1M-2.0, source_task: object, root: '{data_root}/FAIR1M-2.0', split: val}
+  - {name: xView, source_task: object, root: '{data_root}/xView', split: val}
+  - {name: DeepGlobe-LandCover, source_task: lulc, root: '{data_root}/DeepGlobe-LandCover', split: val}
+  - {name: FLAIR-HUB, source_task: lulc, root: '{data_root}/FLAIR-HUB', split: val}
+  - {name: Five-Billion-Pixels, source_task: lulc, root: '{data_root}/Five-Billion-Pixels', split: val}
+  - {name: FloodNet, source_task: lulc, root: '{data_root}/FloodNet', split: val}
+  - {name: GID-15, source_task: lulc, root: '{data_root}/GID-15', split: val}
+  - {name: Global-LoveDA, source_task: lulc, root: '{data_root}/Global-LoveDA', split: val}
+  - {name: ISPRS-Potsdam, source_task: lulc, root: '{data_root}/ISPRS-Potsdam', split: val}
+  - {name: LandCover.ai, source_task: lulc, root: '{data_root}/LandCover.ai', split: val}
+  - {name: OpenEarthMap, source_task: lulc, root: '{data_root}/OpenEarthMap', split: val}
+  - {name: RescueNet, source_task: lulc, root: '{data_root}/RescueNet', split: val}
+  - {name: SkyScapes, source_task: lulc, root: '{data_root}/SkyScapes', split: val}
+  - {name: UAVid, source_task: lulc, root: '{data_root}/UAVid', split: val}
+  - {name: iSAID, source_task: lulc, root: '{data_root}/iSAID', split: val}

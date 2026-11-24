@@ -1,0 +1,26 @@
+data:
+  task_sampling_ratio:
+    scene: 1.0
+    object: 2.0
+    lulc: 4.0
+  scene_prompts_per_image: 12
+  object_prompts_per_image: 12
+  lulc_prompts_per_image: 12
+  validation_max_samples:
+    scene: 450
+    object: 400
+    lulc: 400
+
+loss:
+  ignore_id: 255
+  presence_bce_weight: 1.0
+  segmentation:
+    bce_weight: 1.0
+    dice_weight: 1.0
+    multiclass_ce_weight: 1.0
+  scene:
+    pseudo_lower_quantile: 0.02
+    pseudo_upper_quantile: 0.98
+    pseudo_threshold: 0.5
+  object:
+    max_instances_per_batch: 36

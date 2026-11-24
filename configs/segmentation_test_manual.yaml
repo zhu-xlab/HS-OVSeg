@@ -1,0 +1,8 @@
+datasets:
+  - {name: AID, source_task: scene, root: '{test_root}/AID-GT90', split: test}
+  - {name: NWPU-RESISC45, source_task: scene, root: '{test_root}/NWPU-RESISC45-GT135', split: test}
+  - {name: PatternNet, source_task: scene, root: '{test_root}/PatternNet-GT114', split: test}
+  - {name: DIOR-R, source_task: object, root: '{test_root}/DIOR-R-GT200', split: test}
+  - {name: DOTA-v2, source_task: object, root: '{test_root}/DOTA-v2-GT160', split: test}
+  - {name: FAIR1M-2.0, source_task: object, root: '{test_root}/FAIR1M-2.0-GT201', split: test}
+  - {name: xView, source_task: object, root: '{test_root}/xView-GT100', split: test}

@@ -1,0 +1,29 @@
+{
+  "file": "best-inference.pt",
+  "sha256": "1b6ed45b2d985ec7d42597285db9b245328f7f4361b4839952d8b4bc1ffeb8d6",
+  "bytes": 38526128,
+  "source": "best.pt",
+  "epoch_zero_based": 20,
+  "epoch_one_based": 21,
+  "global_step": 131250,
+  "validation_score": 0.5678394727256316,
+  "best_validation_score": 0.5678394727256316,
+  "tensor_count": 762,
+  "parameters": 9558617,
+  "contents": "LoRA and pixel Router tensors; no base SAM3, optimizer, scheduler, dataset paths, or credentials",
+  "args": {
+    "lora_rank": 8,
+    "lora_scale": 1.0,
+    "sam3_input_size": 518,
+    "router_strategy": "pixel",
+    "training_objective": "unified-head",
+    "fusion_loss_only": true,
+    "fusion_end_to_end": true,
+    "object_semantic_normalization": true,
+    "training_spatial_policy": "min518_scale_0.75_1.5_random_crop",
+    "validation_spatial_policy": "min518_native_non_overlapping_tiles",
+    "sam3_checkpoint": null,
+    "sam3_bpe_path": null,
+    "load_from_hf": false
+  }
+}

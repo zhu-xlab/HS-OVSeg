@@ -1,0 +1,3 @@
+datasets:
+  - {name: DIOR-R, source_task: object, root: '{test_root}/DIOR-R-GT200', split: test}
+  - {name: DOTA-v2, source_task: object, root: '{test_root}/DOTA-v2-GT160', split: test}

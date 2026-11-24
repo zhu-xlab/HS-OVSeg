@@ -1,0 +1,26 @@
+datasets:
+  - {name: AID, source_task: scene, root: '{test_root}/AID-GT90', split: test, evaluation_scope: training_source}
+  - {name: NWPU-RESISC45, source_task: scene, root: '{test_root}/NWPU-RESISC45-GT135', split: test, evaluation_scope: training_source}
+  - {name: PatternNet, source_task: scene, root: '{test_root}/PatternNet-GT114', split: test, evaluation_scope: training_source}
+  - {name: DIOR-R, source_task: object, root: '{test_root}/DIOR-R-GT200', split: test, evaluation_scope: training_source}
+  - {name: DOTA-v2, source_task: object, root: '{test_root}/DOTA-v2-GT160', split: test, evaluation_scope: training_source}
+  - {name: FAIR1M-2.0, source_task: object, root: '{test_root}/FAIR1M-2.0-GT201', split: test, evaluation_scope: training_source}
+  - {name: xView, source_task: object, root: '{test_root}/xView-GT100', split: test, evaluation_scope: training_source}
+  - {name: DeepGlobe-LandCover, source_task: lulc, root: '{test_root}/DeepGlobe-LandCover', split: test, evaluation_scope: training_source}
+  - {name: FLAIR-HUB, source_task: lulc, root: '{test_root}/FLAIR-HUB', split: test, evaluation_scope: training_source}
+  - {name: Five-Billion-Pixels, source_task: lulc, root: '{test_root}/Five-Billion-Pixels', split: test, evaluation_scope: training_source}
+  - {name: FloodNet, source_task: lulc, root: '{test_root}/FloodNet', split: test, evaluation_scope: training_source}
+  - {name: GID-15, source_task: lulc, root: '{test_root}/GID-15', split: test, evaluation_scope: training_source}
+  - {name: Global-LoveDA, source_task: lulc, root: '{test_root}/Global-LoveDA', split: test, evaluation_scope: training_source}
+  - {name: ISPRS-Potsdam, source_task: lulc, root: '{test_root}/ISPRS-Potsdam', split: test, evaluation_scope: training_source}
+  - {name: LandCover.ai, source_task: lulc, root: '{test_root}/LandCover.ai', split: test, evaluation_scope: training_source}
+  - {name: OpenEarthMap, source_task: lulc, root: '{test_root}/OpenEarthMap', split: test, evaluation_scope: training_source}
+  - {name: RescueNet, source_task: lulc, root: '{test_root}/RescueNet', split: test, evaluation_scope: training_source}
+  - {name: SkyScapes, source_task: lulc, root: '{test_root}/SkyScapes', split: test, evaluation_scope: training_source}
+  - {name: UAVid, source_task: lulc, root: '{test_root}/UAVid', split: test, evaluation_scope: training_source}
+  - {name: iSAID, source_task: lulc, root: '{test_root}/iSAID', split: test, evaluation_scope: training_source}
+  - {name: DLRSD, source_task: scene, root: '{test_root}/DLRSD', split: test, focus: scene, evaluation_scope: out_of_domain}
+  - {name: AeroScapes, source_task: object, root: '{test_root}/AeroScapes', split: test, focus: object, evaluation_scope: out_of_domain}
+  - {name: WHDLD, source_task: lulc, root: '{test_root}/WHDLD', split: test, focus: semantic, evaluation_scope: out_of_domain}
+  - {name: VDD, source_task: lulc, root: '{test_root}/VDD', split: test, focus: semantic, evaluation_scope: out_of_domain}
+  - {name: DynamicEarthNet, source_task: lulc, root: '{test_root}/DynamicEarthNet', split: test, focus: semantic, evaluation_scope: out_of_domain}

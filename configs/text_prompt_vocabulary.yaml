@@ -1,0 +1,1751 @@
+version: ovrs-text-vocabulary-v4
+datasets:
+  AID:
+    airport:
+      canonical_name: airport
+      aliases:
+      - airports
+    bare land:
+      canonical_name: bare land
+      aliases:
+      - bareland
+    baseball field:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    beach:
+      canonical_name: beach
+      aliases:
+      - beaches
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    center:
+      canonical_name: city center
+      aliases:
+      - downtown
+      - urban core
+    church:
+      canonical_name: church
+      aliases:
+      - churches
+    commercial:
+      canonical_name: commercial area
+      aliases:
+      - commercial district
+      - business district
+    dense residential:
+      canonical_name: dense residential
+      aliases:
+      - high density residential
+    desert:
+      canonical_name: desert
+      aliases:
+      - deserts
+    farmland:
+      canonical_name: farmland
+      aliases:
+      - farm land
+    forest:
+      canonical_name: forest
+      aliases:
+      - forests
+      - forestland
+      - forest land
+    industrial:
+      canonical_name: industrial area
+      aliases:
+      - industrial zone
+      - industrial district
+    meadow:
+      canonical_name: meadow
+      aliases:
+      - meadows
+    medium residential:
+      canonical_name: medium residential
+      aliases:
+      - medium density residential
+    mountain:
+      canonical_name: mountain
+      aliases:
+      - mountains
+    park:
+      canonical_name: park
+      aliases:
+      - parks
+    parking:
+      canonical_name: parking area
+      aliases:
+      - parking areas
+    playground:
+      canonical_name: playground
+      aliases:
+      - playgrounds
+    pond:
+      canonical_name: pond
+      aliases:
+      - ponds
+    port:
+      canonical_name: port
+      aliases:
+      - seaport
+      - maritime port
+    railway station:
+      canonical_name: train station
+      aliases:
+      - railway station
+      - rail station
+      - train stations
+    resort:
+      canonical_name: resort
+      aliases:
+      - holiday resort
+      - vacation resort
+    river:
+      canonical_name: river
+      aliases:
+      - rivers
+    school:
+      canonical_name: school
+      aliases:
+      - schools
+    sparse residential:
+      canonical_name: sparse residential
+      aliases:
+      - low density residential
+    square:
+      canonical_name: public square
+      aliases:
+      - plaza
+      - civic square
+    stadium:
+      canonical_name: stadium
+      aliases:
+      - sports stadium
+    storage tanks:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    viaduct:
+      canonical_name: viaduct
+      aliases:
+      - viaducts
+  DeepGlobe-LandCover:
+    agriculture land:
+      canonical_name: agricultural land
+      aliases: []
+    barren land:
+      canonical_name: barren land
+      aliases:
+      - barren ground
+    forest land:
+      canonical_name: forest
+      aliases:
+      - forests
+      - forestland
+      - forest land
+    rangeland:
+      canonical_name: rangeland
+      aliases:
+      - range land
+    urban land:
+      canonical_name: urban land
+      aliases: []
+    water:
+      canonical_name: water
+      aliases: []
+  DIOR-R:
+    aircraft:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    airport:
+      canonical_name: airport
+      aliases:
+      - airports
+    background:
+      canonical_name: background
+      aliases: []
+    baseball field:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    chimney:
+      canonical_name: chimney
+      aliases:
+      - smokestack
+    dam:
+      canonical_name: dam
+      aliases:
+      - dams
+    expressway service area:
+      canonical_name: expressway service area
+      aliases:
+      - highway service area
+      - motorway service area
+    expressway toll station:
+      canonical_name: expressway toll station
+      aliases:
+      - highway toll station
+      - motorway toll station
+    golf course:
+      canonical_name: golf course
+      aliases:
+      - golf courses
+    ground track field:
+      canonical_name: athletics track
+      aliases:
+      - running track
+      - athletic track
+    harbor:
+      canonical_name: harbor
+      aliases:
+      - harbour
+    ignore:
+      canonical_name: ignore
+      aliases: []
+    overpass:
+      canonical_name: overpass
+      aliases:
+      - flyover
+      - road overpass
+    ship:
+      canonical_name: ship
+      aliases:
+      - vessel
+      - ships
+      - maritime vessel
+      - marine vessel
+    stadium:
+      canonical_name: stadium
+      aliases:
+      - sports stadium
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+    train station:
+      canonical_name: train station
+      aliases:
+      - railway station
+      - rail station
+      - train stations
+    vehicle:
+      canonical_name: vehicle
+      aliases:
+      - motor vehicle
+      - vehicles
+    wind mill:
+      canonical_name: wind turbine
+      aliases:
+      - wind turbines
+  DOTA-v2:
+    aircraft:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    airport:
+      canonical_name: airport
+      aliases:
+      - airports
+    background:
+      canonical_name: background
+      aliases: []
+    baseball field:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    container crane:
+      canonical_name: container crane
+      aliases:
+      - container gantry crane
+      - container handling crane
+    ground track field:
+      canonical_name: athletics track
+      aliases:
+      - running track
+      - athletic track
+    harbor:
+      canonical_name: harbor
+      aliases:
+      - harbour
+    helicopter:
+      canonical_name: helicopter
+      aliases:
+      - helicopters
+    helipad:
+      canonical_name: helipad
+      aliases:
+      - helicopter landing pad
+    large vehicle:
+      canonical_name: large vehicle
+      aliases:
+      - heavy vehicle
+    roundabout:
+      canonical_name: roundabout
+      aliases:
+      - traffic circle
+    ship:
+      canonical_name: ship
+      aliases:
+      - vessel
+      - ships
+      - maritime vessel
+      - marine vessel
+    small vehicle:
+      canonical_name: small vehicle
+      aliases:
+      - small vehicles
+    soccer ball field:
+      canonical_name: soccer field
+      aliases:
+      - football pitch
+      - soccer pitch
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    swimming pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+  FAIR1M-2.0:
+    a220:
+      canonical_name: a220
+      aliases:
+      - airbus a220
+    a321:
+      canonical_name: a321
+      aliases:
+      - airbus a321
+    a330:
+      canonical_name: a330
+      aliases:
+      - airbus a330
+    a350:
+      canonical_name: a350
+      aliases:
+      - airbus a350
+    arj21:
+      canonical_name: arj21
+      aliases:
+      - comac arj21
+    background:
+      canonical_name: background
+      aliases: []
+    baseball field:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    boeing 737:
+      canonical_name: boeing 737
+      aliases:
+      - b737
+    boeing 747:
+      canonical_name: boeing 747
+      aliases:
+      - b747
+    boeing 777:
+      canonical_name: boeing 777
+      aliases:
+      - b777
+    boeing 787:
+      canonical_name: boeing 787
+      aliases:
+      - b787
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    bus:
+      canonical_name: bus
+      aliases:
+      - buses
+    c919:
+      canonical_name: c919
+      aliases:
+      - comac c919
+    cargo truck:
+      canonical_name: cargo truck
+      aliases:
+      - freight truck
+      - cargo lorry
+    dry cargo ship:
+      canonical_name: dry cargo ship
+      aliases:
+      - dry cargo vessel
+    dump truck:
+      canonical_name: dump truck
+      aliases:
+      - tipper truck
+      - dumper truck
+    engineering ship:
+      canonical_name: engineering ship
+      aliases:
+      - engineering vessel
+    excavator:
+      canonical_name: excavator
+      aliases:
+      - digger
+      - excavators
+    fishing boat:
+      canonical_name: fishing boat
+      aliases:
+      - fishing vessel
+    football field:
+      canonical_name: football field
+      aliases:
+      - american football field
+      - gridiron field
+    intersection:
+      canonical_name: intersection
+      aliases:
+      - road junction
+    liquid cargo ship:
+      canonical_name: liquid cargo ship
+      aliases:
+      - tanker ship
+      - liquid cargo vessel
+    motorboat:
+      canonical_name: motorboat
+      aliases:
+      - motor boat
+      - powerboat
+    other airplane:
+      canonical_name: other airplane
+      aliases: []
+    other ship:
+      canonical_name: other ship
+      aliases: []
+    other vehicle:
+      canonical_name: other vehicle
+      aliases: []
+    passenger ship:
+      canonical_name: passenger ship
+      aliases:
+      - passenger vessel
+    roundabout:
+      canonical_name: roundabout
+      aliases:
+      - traffic circle
+    small car:
+      canonical_name: small car
+      aliases:
+      - small cars
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+    tractor:
+      canonical_name: tractor
+      aliases:
+      - farm tractor
+      - agricultural tractor
+    trailer:
+      canonical_name: trailer
+      aliases:
+      - trailers
+      - truck trailer
+    truck tractor:
+      canonical_name: truck tractor
+      aliases:
+      - tractor unit
+      - prime mover
+    tugboat:
+      canonical_name: tugboat
+      aliases:
+      - tug boat
+    van:
+      canonical_name: van
+      aliases:
+      - vans
+    warship:
+      canonical_name: warship
+      aliases:
+      - naval ship
+      - military ship
+  Five-Billion-Pixels:
+    airport:
+      canonical_name: airport
+      aliases:
+      - airports
+    arbor forest:
+      canonical_name: arbor forest
+      aliases: []
+    artificial meadow:
+      canonical_name: artificial meadow
+      aliases:
+      - man made meadow
+      - man made grassland
+    bareland:
+      canonical_name: bare land
+      aliases:
+      - bareland
+    dry cropland:
+      canonical_name: dry cropland
+      aliases:
+      - dryland cropland
+    fish pond:
+      canonical_name: fish pond
+      aliases:
+      - fish farm pond
+    garden land:
+      canonical_name: garden land
+      aliases: []
+    industrial area:
+      canonical_name: industrial area
+      aliases:
+      - industrial zone
+      - industrial district
+    irrigated field:
+      canonical_name: irrigated field
+      aliases: []
+    lake:
+      canonical_name: lake
+      aliases:
+      - lakes
+    natural meadow:
+      canonical_name: natural meadow
+      aliases:
+      - natural meadowland
+      - natural grassland
+    overpass:
+      canonical_name: overpass
+      aliases:
+      - flyover
+      - road overpass
+    paddy field:
+      canonical_name: paddy field
+      aliases:
+      - rice paddy
+      - rice field
+    park:
+      canonical_name: park
+      aliases:
+      - parks
+    pond:
+      canonical_name: pond
+      aliases:
+      - ponds
+    railway station:
+      canonical_name: train station
+      aliases:
+      - railway station
+      - rail station
+      - train stations
+    river:
+      canonical_name: river
+      aliases:
+      - rivers
+    road:
+      canonical_name: road
+      aliases:
+      - roadway
+      - roads
+    rural residential:
+      canonical_name: rural residential area
+      aliases: []
+    shrub forest:
+      canonical_name: shrub forest
+      aliases: []
+    snow:
+      canonical_name: snow
+      aliases:
+      - snow cover
+    square:
+      canonical_name: public square
+      aliases:
+      - plaza
+      - civic square
+    stadium:
+      canonical_name: stadium
+      aliases:
+      - sports stadium
+    urban residential:
+      canonical_name: urban residential area
+      aliases:
+      - urban housing area
+  FLAIR-HUB:
+    agricultural land:
+      canonical_name: agricultural land
+      aliases: []
+    bare soil:
+      canonical_name: bare soil
+      aliases:
+      - bare earth
+      - exposed soil
+    brushwood:
+      canonical_name: brushwood
+      aliases: []
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    clear cut:
+      canonical_name: clear cut
+      aliases:
+      - clear-cut area
+      - clearcut area
+    coniferous:
+      canonical_name: coniferous trees
+      aliases:
+      - conifer trees
+      - conifers
+    deciduous:
+      canonical_name: deciduous trees
+      aliases:
+      - deciduous tree
+    greenhouse:
+      canonical_name: greenhouse
+      aliases:
+      - glasshouse
+    herbaceous vegetation:
+      canonical_name: herbaceous vegetation
+      aliases:
+      - herbaceous cover
+    impervious surface:
+      canonical_name: impervious surface
+      aliases:
+      - impermeable surface
+      - sealed surface
+    ligneous:
+      canonical_name: ligneous
+      aliases:
+      - woody vegetation
+    mixed:
+      canonical_name: mixed
+      aliases: []
+    pervious surface:
+      canonical_name: pervious surface
+      aliases:
+      - permeable surface
+    plowed land:
+      canonical_name: plowed land
+      aliases:
+      - ploughed land
+      - tilled land
+    snow:
+      canonical_name: snow
+      aliases:
+      - snow cover
+    swimming pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    undefined:
+      canonical_name: ignore
+      aliases: []
+    vineyard:
+      canonical_name: vineyard
+      aliases:
+      - vineyards
+    water:
+      canonical_name: water
+      aliases: []
+  FloodNet:
+    background:
+      canonical_name: background
+      aliases: []
+    building flooded:
+      canonical_name: flooded building
+      aliases:
+      - inundated building
+    building non flooded:
+      canonical_name: non flooded building
+      aliases:
+      - non inundated building
+      - building not flooded
+    grass:
+      canonical_name: grass
+      aliases:
+      - grasses
+      - grass cover
+    pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    road flooded:
+      canonical_name: flooded road
+      aliases:
+      - inundated road
+    road non flooded:
+      canonical_name: non flooded road
+      aliases:
+      - non inundated road
+      - road not flooded
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+    vehicle:
+      canonical_name: vehicle
+      aliases:
+      - motor vehicle
+      - vehicles
+    water:
+      canonical_name: water
+      aliases: []
+  GID-15:
+    arbor woodland:
+      canonical_name: arbor forest
+      aliases: []
+    artificial grassland:
+      canonical_name: artificial meadow
+      aliases:
+      - man made meadow
+      - man made grassland
+    background:
+      canonical_name: background
+      aliases: []
+    dry cropland:
+      canonical_name: dry cropland
+      aliases:
+      - dryland cropland
+    garden plot:
+      canonical_name: garden land
+      aliases: []
+    industrial land:
+      canonical_name: industrial area
+      aliases:
+      - industrial zone
+      - industrial district
+    irrigated land:
+      canonical_name: irrigated land
+      aliases: []
+    lake:
+      canonical_name: lake
+      aliases:
+      - lakes
+    natural grassland:
+      canonical_name: natural meadow
+      aliases:
+      - natural meadowland
+      - natural grassland
+    paddy field:
+      canonical_name: paddy field
+      aliases:
+      - rice paddy
+      - rice field
+    pond:
+      canonical_name: pond
+      aliases:
+      - ponds
+    river:
+      canonical_name: river
+      aliases:
+      - rivers
+    rural residential:
+      canonical_name: rural residential area
+      aliases: []
+    shrub land:
+      canonical_name: shrub land
+      aliases:
+      - shrubland
+      - scrubland
+    traffic land:
+      canonical_name: transportation land
+      aliases:
+      - transport land
+    urban residential:
+      canonical_name: urban residential area
+      aliases:
+      - urban housing area
+  Global-LoveDA:
+    agriculture:
+      canonical_name: agricultural land
+      aliases: []
+    background:
+      canonical_name: background
+      aliases: []
+    barren:
+      canonical_name: barren land
+      aliases:
+      - barren ground
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    forest:
+      canonical_name: forest
+      aliases:
+      - forests
+      - forestland
+      - forest land
+    playground:
+      canonical_name: playground
+      aliases:
+      - playgrounds
+    road:
+      canonical_name: road
+      aliases:
+      - roadway
+      - roads
+    water:
+      canonical_name: water
+      aliases: []
+  iSAID:
+    background:
+      canonical_name: background
+      aliases: []
+    baseball diamond:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    ground track field:
+      canonical_name: athletics track
+      aliases:
+      - running track
+      - athletic track
+    harbor:
+      canonical_name: harbor
+      aliases:
+      - harbour
+    helicopter:
+      canonical_name: helicopter
+      aliases:
+      - helicopters
+    large vehicle:
+      canonical_name: large vehicle
+      aliases:
+      - heavy vehicle
+    plane:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    roundabout:
+      canonical_name: roundabout
+      aliases:
+      - traffic circle
+    ship:
+      canonical_name: ship
+      aliases:
+      - vessel
+      - ships
+      - maritime vessel
+      - marine vessel
+    small vehicle:
+      canonical_name: small vehicle
+      aliases:
+      - small vehicles
+    soccer ball field:
+      canonical_name: soccer field
+      aliases:
+      - football pitch
+      - soccer pitch
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    swimming pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+  ISPRS-Potsdam:
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    car:
+      canonical_name: car
+      aliases:
+      - automobile
+      - cars
+    clutter background:
+      canonical_name: clutter background
+      aliases: []
+    impervious surface:
+      canonical_name: impervious surface
+      aliases:
+      - impermeable surface
+      - sealed surface
+    low vegetation:
+      canonical_name: low vegetation
+      aliases:
+      - low growing vegetation
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+  LandCover.ai:
+    background:
+      canonical_name: background
+      aliases: []
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    road:
+      canonical_name: road
+      aliases:
+      - roadway
+      - roads
+    water:
+      canonical_name: water
+      aliases: []
+    woodland:
+      canonical_name: woodland
+      aliases:
+      - woodlands
+  NWPU-RESISC45:
+    airplane:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    airport:
+      canonical_name: airport
+      aliases:
+      - airports
+    baseball diamond:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    beach:
+      canonical_name: beach
+      aliases:
+      - beaches
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    chaparral:
+      canonical_name: chaparral
+      aliases:
+      - chaparral vegetation
+    church:
+      canonical_name: church
+      aliases:
+      - churches
+    circular farmland:
+      canonical_name: circular farmland
+      aliases:
+      - circular farm field
+    cloud:
+      canonical_name: cloud
+      aliases:
+      - clouds
+    commercial area:
+      canonical_name: commercial area
+      aliases:
+      - commercial district
+      - business district
+    dense residential:
+      canonical_name: dense residential
+      aliases:
+      - high density residential
+    desert:
+      canonical_name: desert
+      aliases:
+      - deserts
+    forest:
+      canonical_name: forest
+      aliases:
+      - forests
+      - forestland
+      - forest land
+    freeway:
+      canonical_name: freeway
+      aliases:
+      - motorway
+      - controlled access highway
+    golf course:
+      canonical_name: golf course
+      aliases:
+      - golf courses
+    ground track field:
+      canonical_name: athletics track
+      aliases:
+      - running track
+      - athletic track
+    harbor:
+      canonical_name: harbor
+      aliases:
+      - harbour
+    industrial area:
+      canonical_name: industrial area
+      aliases:
+      - industrial zone
+      - industrial district
+    intersection:
+      canonical_name: intersection
+      aliases:
+      - road junction
+    island:
+      canonical_name: island
+      aliases:
+      - isle
+    lake:
+      canonical_name: lake
+      aliases:
+      - lakes
+    meadow:
+      canonical_name: meadow
+      aliases:
+      - meadows
+    medium residential:
+      canonical_name: medium residential
+      aliases:
+      - medium density residential
+    mobile home park:
+      canonical_name: mobile home park
+      aliases:
+      - trailer park
+      - manufactured home park
+    mountain:
+      canonical_name: mountain
+      aliases:
+      - mountains
+    overpass:
+      canonical_name: overpass
+      aliases:
+      - flyover
+      - road overpass
+    palace:
+      canonical_name: palace
+      aliases:
+      - palaces
+    parking lot:
+      canonical_name: parking lot
+      aliases:
+      - car park
+      - parking lots
+    railway:
+      canonical_name: railway
+      aliases:
+      - railroad
+    railway station:
+      canonical_name: train station
+      aliases:
+      - railway station
+      - rail station
+      - train stations
+    rectangular farmland:
+      canonical_name: rectangular farmland
+      aliases:
+      - rectangular farm field
+    river:
+      canonical_name: river
+      aliases:
+      - rivers
+    roundabout:
+      canonical_name: roundabout
+      aliases:
+      - traffic circle
+    runway:
+      canonical_name: runway
+      aliases:
+      - runways
+    sea ice:
+      canonical_name: sea ice
+      aliases: []
+    ship:
+      canonical_name: ship
+      aliases:
+      - vessel
+      - ships
+      - maritime vessel
+      - marine vessel
+    snowberg:
+      canonical_name: iceberg
+      aliases:
+      - ice berg
+    sparse residential:
+      canonical_name: sparse residential
+      aliases:
+      - low density residential
+    stadium:
+      canonical_name: stadium
+      aliases:
+      - sports stadium
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+    terrace:
+      canonical_name: terrace
+      aliases:
+      - terraced field
+      - agricultural terrace
+    thermal power station:
+      canonical_name: thermal power station
+      aliases:
+      - thermal power plant
+    wetland:
+      canonical_name: wetland
+      aliases:
+      - wetlands
+  OpenEarthMap:
+    agriculture land:
+      canonical_name: agricultural land
+      aliases: []
+    bareland:
+      canonical_name: bare land
+      aliases:
+      - bareland
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    developed space:
+      canonical_name: developed space
+      aliases: []
+    rangeland:
+      canonical_name: rangeland
+      aliases:
+      - range land
+    road:
+      canonical_name: road
+      aliases:
+      - roadway
+      - roads
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+    water:
+      canonical_name: water
+      aliases: []
+  PatternNet:
+    airplane:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    baseball field:
+      canonical_name: baseball field
+      aliases:
+      - baseball diamond
+    basketball court:
+      canonical_name: basketball court
+      aliases:
+      - basketball courts
+    beach:
+      canonical_name: beach
+      aliases:
+      - beaches
+    bridge:
+      canonical_name: bridge
+      aliases:
+      - bridges
+    cemetery:
+      canonical_name: cemetery
+      aliases:
+      - graveyard
+    chaparral:
+      canonical_name: chaparral
+      aliases:
+      - chaparral vegetation
+    christmas tree farm:
+      canonical_name: christmas tree farm
+      aliases:
+      - christmas tree plantation
+    closed road:
+      canonical_name: closed road
+      aliases:
+      - closed roadway
+    coastal mansion:
+      canonical_name: coastal mansion
+      aliases:
+      - seaside mansion
+    crosswalk:
+      canonical_name: crosswalk
+      aliases:
+      - pedestrian crossing
+      - zebra crossing
+    dense residential:
+      canonical_name: dense residential
+      aliases:
+      - high density residential
+    ferry terminal:
+      canonical_name: ferry terminal
+      aliases:
+      - ferry terminals
+    football field:
+      canonical_name: football field
+      aliases:
+      - american football field
+      - gridiron field
+    forest:
+      canonical_name: forest
+      aliases:
+      - forests
+      - forestland
+      - forest land
+    freeway:
+      canonical_name: freeway
+      aliases:
+      - motorway
+      - controlled access highway
+    golf course:
+      canonical_name: golf course
+      aliases:
+      - golf courses
+    harbor:
+      canonical_name: harbor
+      aliases:
+      - harbour
+    intersection:
+      canonical_name: intersection
+      aliases:
+      - road junction
+    mobile home park:
+      canonical_name: mobile home park
+      aliases:
+      - trailer park
+      - manufactured home park
+    nursing home:
+      canonical_name: nursing home
+      aliases:
+      - care home
+    oil gas field:
+      canonical_name: oil and gas field
+      aliases:
+      - oil and gas fields
+    oil well:
+      canonical_name: oil well
+      aliases:
+      - petroleum well
+    overpass:
+      canonical_name: overpass
+      aliases:
+      - flyover
+      - road overpass
+    parking lot:
+      canonical_name: parking lot
+      aliases:
+      - car park
+      - parking lots
+    parking space:
+      canonical_name: parking space
+      aliases:
+      - parking bay
+      - parking stall
+    railway:
+      canonical_name: railway
+      aliases:
+      - railroad
+    river:
+      canonical_name: river
+      aliases:
+      - rivers
+    runway:
+      canonical_name: runway
+      aliases:
+      - runways
+    runway marking:
+      canonical_name: runway marking
+      aliases:
+      - runway markings
+    shipping yard:
+      canonical_name: shipping yard
+      aliases:
+      - shipping yards
+    solar panel:
+      canonical_name: solar panel
+      aliases:
+      - photovoltaic panel
+      - pv panel
+    sparse residential:
+      canonical_name: sparse residential
+      aliases:
+      - low density residential
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    swimming pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    tennis court:
+      canonical_name: tennis court
+      aliases:
+      - tennis courts
+    transformer station:
+      canonical_name: transformer station
+      aliases:
+      - transformer substation
+    wastewater treatment plant:
+      canonical_name: wastewater treatment plant
+      aliases:
+      - sewage treatment plant
+  RescueNet:
+    background:
+      canonical_name: background
+      aliases: []
+    building major damage:
+      canonical_name: building with major damage
+      aliases:
+      - severely damaged building
+    building minor damage:
+      canonical_name: building with minor damage
+      aliases:
+      - slightly damaged building
+    building no damage:
+      canonical_name: undamaged building
+      aliases:
+      - intact building
+    building total destruction:
+      canonical_name: destroyed building
+      aliases:
+      - totally destroyed building
+      - fully destroyed building
+    pool:
+      canonical_name: swimming pool
+      aliases:
+      - swimming pools
+    road blocked:
+      canonical_name: blocked road
+      aliases:
+      - obstructed road
+    road clear:
+      canonical_name: clear road
+      aliases:
+      - unobstructed road
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+    vehicle:
+      canonical_name: vehicle
+      aliases:
+      - motor vehicle
+      - vehicles
+    water:
+      canonical_name: water
+      aliases: []
+  SkyScapes:
+    bikeway:
+      canonical_name: bikeway
+      aliases:
+      - cycleway
+      - bike path
+      - bicycle path
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    bus:
+      canonical_name: bus
+      aliases:
+      - buses
+    car:
+      canonical_name: car
+      aliases:
+      - automobile
+      - cars
+    clutter:
+      canonical_name: clutter
+      aliases: []
+    danger area:
+      canonical_name: danger area
+      aliases:
+      - danger zone
+      - hazard zone
+    entrance exit:
+      canonical_name: entrance and exit
+      aliases:
+      - entry and exit
+    impervious surface:
+      canonical_name: impervious surface
+      aliases:
+      - impermeable surface
+      - sealed surface
+    lane marking:
+      canonical_name: lane marking
+      aliases:
+      - lane line
+      - lane stripe
+    large truck:
+      canonical_name: large truck
+      aliases:
+      - heavy truck
+      - heavy goods vehicle
+    low vegetation:
+      canonical_name: low vegetation
+      aliases:
+      - low growing vegetation
+    non paved parking place:
+      canonical_name: unpaved parking area
+      aliases:
+      - unsurfaced parking area
+    non paved road:
+      canonical_name: unpaved road
+      aliases:
+      - unsurfaced road
+    paved parking place:
+      canonical_name: paved parking area
+      aliases: []
+    paved road:
+      canonical_name: paved road
+      aliases:
+      - surfaced road
+      - sealed road
+    sidewalk:
+      canonical_name: sidewalk
+      aliases:
+      - sidewalks
+    trailer:
+      canonical_name: trailer
+      aliases:
+      - trailers
+      - truck trailer
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+    truck:
+      canonical_name: truck
+      aliases:
+      - lorry
+      - trucks
+    van:
+      canonical_name: van
+      aliases:
+      - vans
+  UAVid:
+    background clutter:
+      canonical_name: background clutter
+      aliases: []
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    human:
+      canonical_name: human
+      aliases:
+      - person
+      - people
+    low vegetation:
+      canonical_name: low vegetation
+      aliases:
+      - low growing vegetation
+    moving car:
+      canonical_name: moving car
+      aliases:
+      - car in motion
+    road:
+      canonical_name: road
+      aliases:
+      - roadway
+      - roads
+    static car:
+      canonical_name: static car
+      aliases:
+      - stationary car
+    tree:
+      canonical_name: tree
+      aliases:
+      - trees
+  xView:
+    fixed wing aircraft:
+      canonical_name: aircraft
+      aliases:
+      - airplane
+      - aeroplane
+      - plane
+      - fixed wing aircraft
+      - fixed wing airplane
+    small aircraft:
+      canonical_name: small aircraft
+      aliases:
+      - small airplane
+    cargo plane:
+      canonical_name: cargo plane
+      aliases:
+      - cargo aircraft
+    helicopter:
+      canonical_name: helicopter
+      aliases:
+      - helicopters
+    passenger vehicle:
+      canonical_name: passenger vehicle
+      aliases:
+      - passenger motor vehicle
+    small car:
+      canonical_name: small car
+      aliases:
+      - small cars
+    bus:
+      canonical_name: bus
+      aliases:
+      - buses
+    pickup truck:
+      canonical_name: pickup truck
+      aliases:
+      - pickup
+    utility truck:
+      canonical_name: utility truck
+      aliases: []
+    truck:
+      canonical_name: truck
+      aliases:
+      - lorry
+      - trucks
+    cargo truck:
+      canonical_name: cargo truck
+      aliases:
+      - freight truck
+      - cargo lorry
+    truck w/box:
+      canonical_name: truck tractor with box trailer
+      aliases: []
+    truck tractor:
+      canonical_name: truck tractor
+      aliases:
+      - tractor unit
+      - prime mover
+    trailer:
+      canonical_name: trailer
+      aliases:
+      - trailers
+      - truck trailer
+    truck w/flatbed:
+      canonical_name: truck tractor with flatbed trailer
+      aliases: []
+    truck w/liquid:
+      canonical_name: truck tractor with liquid tank trailer
+      aliases: []
+    crane truck:
+      canonical_name: crane truck
+      aliases:
+      - truck mounted crane
+    railway vehicle:
+      canonical_name: railway vehicle
+      aliases:
+      - rail vehicle
+    passenger car:
+      canonical_name: railway passenger car
+      aliases:
+      - passenger railcar
+    cargo car:
+      canonical_name: railway cargo car
+      aliases:
+      - freight railcar
+    flat car:
+      canonical_name: railway flat car
+      aliases:
+      - flatbed railcar
+    tank car:
+      canonical_name: railway tank car
+      aliases:
+      - tank railcar
+    locomotive:
+      canonical_name: locomotive
+      aliases:
+      - railway engine
+    maritime vessel:
+      canonical_name: ship
+      aliases:
+      - vessel
+      - ships
+      - maritime vessel
+      - marine vessel
+    motorboat:
+      canonical_name: motorboat
+      aliases:
+      - motor boat
+      - powerboat
+    sailboat:
+      canonical_name: sailboat
+      aliases:
+      - sailing boat
+    tugboat:
+      canonical_name: tugboat
+      aliases:
+      - tug boat
+    barge:
+      canonical_name: barge
+      aliases:
+      - barges
+    fishing vessel:
+      canonical_name: fishing boat
+      aliases:
+      - fishing vessel
+    ferry:
+      canonical_name: ferry
+      aliases:
+      - ferryboat
+    yacht:
+      canonical_name: yacht
+      aliases:
+      - yachts
+    container ship:
+      canonical_name: container ship
+      aliases:
+      - container vessel
+    oil tanker:
+      canonical_name: oil tanker
+      aliases:
+      - oil tanker ship
+    engineering vehicle:
+      canonical_name: engineering vehicle
+      aliases: []
+    tower crane:
+      canonical_name: tower crane
+      aliases:
+      - construction tower crane
+    container crane:
+      canonical_name: container crane
+      aliases:
+      - container gantry crane
+      - container handling crane
+    reach stacker:
+      canonical_name: reach stacker
+      aliases:
+      - container reach stacker
+    straddle carrier:
+      canonical_name: straddle carrier
+      aliases:
+      - container straddle carrier
+    mobile crane:
+      canonical_name: mobile crane
+      aliases: []
+    dump truck:
+      canonical_name: dump truck
+      aliases:
+      - tipper truck
+      - dumper truck
+    haul truck:
+      canonical_name: haul truck
+      aliases: []
+    scraper/tractor:
+      canonical_name: scraper or tractor
+      aliases: []
+    front loader/bulldozer:
+      canonical_name: front loader or bulldozer
+      aliases: []
+    excavator:
+      canonical_name: excavator
+      aliases:
+      - digger
+      - excavators
+    cement mixer:
+      canonical_name: concrete mixer truck
+      aliases:
+      - cement mixer truck
+    ground grader:
+      canonical_name: motor grader
+      aliases:
+      - road grader
+    hut/tent:
+      canonical_name: hut or tent
+      aliases: []
+    shed:
+      canonical_name: shed
+      aliases:
+      - sheds
+    building:
+      canonical_name: building
+      aliases:
+      - buildings
+    aircraft hangar:
+      canonical_name: aircraft hangar
+      aliases:
+      - airplane hangar
+    damaged building:
+      canonical_name: damaged building
+      aliases:
+      - damaged buildings
+    facility:
+      canonical_name: facility
+      aliases:
+      - facilities
+    construction site:
+      canonical_name: construction site
+      aliases:
+      - construction area
+    vehicle lot:
+      canonical_name: vehicle lot
+      aliases: []
+    helipad:
+      canonical_name: helipad
+      aliases:
+      - helicopter landing pad
+    storage tank:
+      canonical_name: storage tank
+      aliases:
+      - storage tanks
+    shipping container lot:
+      canonical_name: shipping container lot
+      aliases:
+      - container storage yard
+    shipping container:
+      canonical_name: shipping container
+      aliases:
+      - freight container
+    pylon:
+      canonical_name: pylon
+      aliases:
+      - electrical pylon
+    tower:
+      canonical_name: tower
+      aliases:
+      - towers

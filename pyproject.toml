@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovrs-segmentation"
+version = "0.1.0"
+description = "Scene-object-LULC open-vocabulary segmentation with SAM3"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<2",
+  "Pillow>=10.0",
+  "PyYAML>=6.0",
+  "opencv-python-headless>=4.8",
+  "torch>=2.0",
+  "torchvision>=0.15",
+  "gdown>=5.2",
+  "tqdm>=4.66",
+  "huggingface_hub>=0.30",
+  "datasets>=3.0",
+  "hf_xet>=1.1",
+  "tifffile>=2024.2",
+  "imagecodecs>=2024.1",
+  "lmdb>=1.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+geo = ["rasterio>=1.3", "pyproj>=3.6"]
+
+[tool.setuptools.packages.find]
+include = ["ovrs_segmentation*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
