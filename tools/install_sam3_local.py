@@ -17,6 +17,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TARGET = PROJECT_ROOT / "third_party" / "sam3"
+DEFAULT_REF = "660a5e9e1b8b4c02c0ad97229b88a09a6e4ff5b7"
 
 
 def _run(command: list[str]) -> None:
@@ -35,8 +36,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--ref",
-        default="main",
-        help="Git branch, tag, or commit to check out (default: main).",
+        default=DEFAULT_REF,
+        help="Git branch, tag, or commit (default: the tested HS-OVSeg revision).",
     )
     parser.add_argument(
         "--target",
@@ -75,7 +76,7 @@ def main() -> None:
         _run(["git", "-C", str(target), "fetch", "--all", "--tags"])
 
     _run(["git", "-C", str(target), "checkout", args.ref])
-    _run([sys.executable, "-m", "pip", "install", "-e", f"{target}[train,dev]"])
+    _run([sys.executable, "-m", "pip", "install", "setuptools<81", "-e", f"{target}[train,dev]"])
 
     verification = (
         "from pathlib import Path; import sam3; "
