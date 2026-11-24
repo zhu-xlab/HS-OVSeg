@@ -10,7 +10,7 @@ Use Python 3.12+ and CUDA-enabled PyTorch 2.7+ compatible with [SAM3](https://gi
 git clone https://github.com/zhu-xlab/HS-OVSeg.git
 cd HS-OVSeg
 python tools/install_sam3_local.py
-python -m pip install -e '.[dev,geo]'
+python -m pip install -e '.[geo]'
 ```
 
 Request the original SAM3 weights from the [official repository](https://huggingface.co/facebook/sam3) and save them as `checkpoints/sam3.pt`. The trained inference checkpoint is available at [WeiHuang95/HS-OVSeg](https://huggingface.co/WeiHuang95/HS-OVSeg) (36.7 MiB).

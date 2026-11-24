@@ -25,12 +25,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.4"]
 geo = ["rasterio>=1.3", "pyproj>=3.6"]
 
 [tool.setuptools.packages.find]
 include = ["ovrs_segmentation*"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-q"
