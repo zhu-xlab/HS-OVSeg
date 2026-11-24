@@ -41,7 +41,7 @@ python scripts/data/download_huggingface.py \
 
 下载默认排除 OOD，并使用真实训练/测试 reader 检查所选 split、解码各 split 的首个样本；这不是逐样本完整审计。`--mode train` 只下载训练/验证，`--mode test` 只下载测试；`--revision TAG_OR_COMMIT` 固定版本；`--test-suite PATH` 选择测试子集。重复运行会复用已下载且未变更的文件。
 
-发布版本按 `archives/AID/part-00000.tar` 等路径保存整理后的 tar 分片，`data-manifest.json` 记录 SHA-256；下载命令中的 `--extract-archives` 会重建目录。维护者可用 `python scripts/data/publish_huggingface.py --repo-id WeiHuang95/HS-OVSeg-Data --data-root /path/to/RSOD --work-root /path/to/publication` 完成导出、默认 4 GiB 分片和上传。上传要求私有仓库；重复运行跳过已校验上传的分片。也支持按数据集上传 `.tar`、`.tar.gz`、`.tgz` 或 `.zip` 并添加 `--extract-archives`。例如 `AID.tar.gz` 内须包含 `AID/dataset.json`，`segmentation_test/AID-GT90.tar.gz` 内须包含 `segmentation_test/AID-GT90/dataset.json`；内部路径均相对于 RSOD 根目录。解压会更新对应本地文件。原始数据或 Parquet 格式需先转换。
+发布版本按 `archives/AID/part-00000.tar` 等路径保存整理后的 tar 分片，`data-manifest.json` 记录 SHA-256；下载命令中的 `--extract-archives` 会重建目录。维护者可用 `python scripts/data/publish_huggingface.py --repo-id WeiHuang95/HS-OVSeg-Data --data-root /path/to/RSOD --work-root /path/to/publication --allow-public` 完成导出、默认 4 GiB 分片和上传。公开仓库上传须显式传入 `--allow-public`；重复运行跳过已校验上传的分片。也支持按数据集上传 `.tar`、`.tar.gz`、`.tgz` 或 `.zip` 并添加 `--extract-archives`。例如 `AID.tar.gz` 内须包含 `AID/dataset.json`，`segmentation_test/AID-GT90.tar.gz` 内须包含 `segmentation_test/AID-GT90/dataset.json`；内部路径均相对于 RSOD 根目录。解压会更新对应本地文件。原始数据或 Parquet 格式需先转换。
 
 ## 训练
 

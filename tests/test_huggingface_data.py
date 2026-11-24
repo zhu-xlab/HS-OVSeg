@@ -68,7 +68,7 @@ class HuggingFaceDataTest(unittest.TestCase):
             uploaded, calls = {}, []
             class API:
                 def repo_info(self, *args, **kwargs):
-                    return SimpleNamespace(private=True)
+                    return SimpleNamespace(private=False)
                 def get_paths_info(self, repo, paths, **kwargs):
                     return [SimpleNamespace(lfs=SimpleNamespace(sha256=uploaded[paths[0]]))] if paths[0] in uploaded else []
                 def upload_file(self, *, path_or_fileobj, path_in_repo, **kwargs):
@@ -76,10 +76,12 @@ class HuggingFaceDataTest(unittest.TestCase):
                     calls.append(path_in_repo)
             with patch("huggingface_hub.HfApi", API), patch(
                     "ovrs_segmentation.preprocessing.huggingface_publish.dataset_entries", return_value=entries):
-                publish("owner/data", source, work)
+                with self.assertRaisesRegex(ValueError, "allow-public"):
+                    publish("owner/data", source, work)
+                publish("owner/data", source, work, allow_public=True)
                 self.assertEqual(calls, ["archives/Toy/part-00000.tar", "data-manifest.json"])
                 calls.clear()
-                publish("owner/data", source, work)
+                publish("owner/data", source, work, allow_public=True)
                 self.assertEqual(calls, ["data-manifest.json"])
             self.assertEqual(json.loads((work / "publication-status.json").read_text())["phase"], "complete")
     def test_export_keeps_only_selected_samples_once_and_unpacks_lmdb(self):

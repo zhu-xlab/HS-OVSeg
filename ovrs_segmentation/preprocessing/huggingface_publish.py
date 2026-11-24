@@ -1,4 +1,4 @@
-"""Publish selected prepared data as tar shards to a private Hugging Face repo."""
+"""Publish selected data as tar shards, requiring explicit public-upload opt-in."""
 from __future__ import annotations
 
 import argparse
@@ -16,12 +16,12 @@ def _write_json(path, value):
     temporary.replace(path)
 
 
-def publish(repo_id, data_root, work_root, *, shard_bytes=4 * 1024**3):
+def publish(repo_id, data_root, work_root, *, shard_bytes=4 * 1024**3, allow_public=False):
     from huggingface_hub import HfApi
 
     api = HfApi()
-    if not api.repo_info(repo_id, repo_type="dataset").private:
-        raise ValueError("Publish prepared data only to a private repository")
+    if not api.repo_info(repo_id, repo_type="dataset").private and not allow_public:
+        raise ValueError("Public upload requires explicit --allow-public")
     source, work = Path(data_root).resolve(), Path(work_root).resolve()
     if source == work or source in work.parents or work in source.parents:
         raise ValueError("Publication work root must be separate from source data")
@@ -111,11 +111,12 @@ def main():
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--work-root", type=Path, required=True)
     parser.add_argument("--shard-gib", type=float, default=4)
+    parser.add_argument("--allow-public", action="store_true", help="Explicitly allow a public destination")
     args = parser.parse_args()
     if args.shard_gib <= 0:
         parser.error("--shard-gib must be positive")
     publish(args.repo_id, args.data_root, args.work_root,
-            shard_bytes=int(args.shard_gib * 1024**3))
+            shard_bytes=int(args.shard_gib * 1024**3), allow_public=args.allow_public)
 
 
 if __name__ == "__main__":
