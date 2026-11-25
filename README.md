@@ -7,7 +7,7 @@ Open-vocabulary remote-sensing segmentation with heterogeneous supervision.
 Use Python 3.12+ and CUDA-enabled PyTorch 2.7+ compatible with [SAM3](https://github.com/facebookresearch/sam3#installation).
 
 ```bash
-git clone https://github.com/zhu-xlab/HS-OVSeg.git
+git clone https://github.com/hw2hwei/HS-OVSeg.git
 cd HS-OVSeg
 python tools/install_sam3_local.py
 python -m pip install -e '.[geo]'
